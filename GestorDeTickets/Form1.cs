@@ -40,7 +40,7 @@ namespace GestorDeTickets
                 var lineas = File.ReadAllLines(rutaFichero);
                 foreach (var linea in lineas)
                 {
-                    var datos = linea.Split(",");
+                    var datos = linea.Split(',');
                     tablaTickets.Rows.Add(Convert.ToInt32(datos[0]), datos[1], Convert.ToInt32(datos[2]), datos[3], DateTime.Parse(datos[4]));
                 }
             }
@@ -137,24 +137,30 @@ namespace GestorDeTickets
             }
         }
 
-        private void BotonExportar_Click(object sender, EventArgs e)
+        private void BotonGuardar_Click(object sender, EventArgs e)
         {
-            ExportarBaseDatos();
+            GuardarTicketsEnFichero();
+            MessageBox.Show("Cambios guardados con éxito.");
         }
 
-        private void BotonImportar_Click(object sender, EventArgs e)
+        private void BotonImportar_Click_1(object sender, EventArgs e)
         {
             ImportarBaseDatos();
         }
 
-        private void BotonModificarAsignacion_Click(object sender, EventArgs e)
+        private void BotonModificarAsignacion_Click_1(object sender, EventArgs e)
         {
             int ticketId = Convert.ToInt32(inputTicketID.Text); // Suponiendo un TextBox para ingresar el ID del ticket
             int nuevoUsuarioId = Convert.ToInt32(inputNuevoUsuarioID.Text); // Suponiendo un TextBox para ingresar el nuevo ID de usuario
             ModificarAsignacionUsuario(ticketId, nuevoUsuarioId);
         }
 
-        private void BotonMostrarResumen_Click(object sender, EventArgs e)
+        private void BotonExportar_Click_1(object sender, EventArgs e)
+        {
+            ExportarBaseDatos();
+        }
+
+        private void BotonMostrarResumen_Click_1(object sender, EventArgs e)
         {
             MostrarInformacionTickets();
         }
